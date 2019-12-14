@@ -10,9 +10,9 @@ import br.com.tmdev.agenda.entities.User
 
 class AgendaAdapter : RecyclerView.Adapter<AgendaAdapter.ViewHolder> {
 
-    private var mAgendaItem: List<User> = mutableListOf()
+    private var mAgendaItem: MutableList<User> = mutableListOf()
 
-    constructor(agendaItem: List<User>) : super() {
+    constructor(agendaItem: MutableList<User>) : super() {
         this.mAgendaItem = agendaItem
     }
 
@@ -33,9 +33,10 @@ class AgendaAdapter : RecyclerView.Adapter<AgendaAdapter.ViewHolder> {
         holder.mTextName?.text = item.name
     }
 
-    fun updateListUsers(userList: List<User>?) {
-       if (userList != null) {
+    fun updateListUsers(userList: MutableList<User>?) {
+       if (userList != null && userList.isNotEmpty()) {
            mAgendaItem = userList
+           notifyDataSetChanged()
        }
     }
 

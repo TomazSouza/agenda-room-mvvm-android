@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import br.com.tmdev.agenda.db.UserDao
 import br.com.tmdev.agenda.db.UserEntity
 import br.com.tmdev.agenda.db.UserRoomDatabase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 open class AgendaRepository {
 
@@ -15,7 +17,7 @@ open class AgendaRepository {
         mUserDao = db?.getUserDao()
     }
 
-    suspend fun insert(userEntity: UserEntity) {
+    fun insert(userEntity: UserEntity) = GlobalScope.launch {
         mUserDao?.insertUser(userEntity)
     }
 

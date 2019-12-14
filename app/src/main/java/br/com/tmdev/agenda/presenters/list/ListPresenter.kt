@@ -17,7 +17,7 @@ class ListPresenter : ContractList.Presenter {
     }
 
     override fun attach(view: ContractList.View) {
-       this.mViewImpl = view
+        this.mViewImpl = view
     }
 
     override fun unsubscribe() {
@@ -25,8 +25,8 @@ class ListPresenter : ContractList.Presenter {
     }
 
     override fun setListUsers(userList: List<UserEntity>?) {
-        if (userList != null && userList.isNotEmpty()) {
 
+        if (userList != null && userList.isNotEmpty()) {
             val parseUserList: MutableList<User> = mutableListOf()
 
             for (userEntity in userList) {
@@ -40,7 +40,10 @@ class ListPresenter : ContractList.Presenter {
             }
 
             mViewImpl?.updateList(parseUserList)
+        } else {
+            mViewImpl?.updateListEmpty()
         }
+
     }
 
 }

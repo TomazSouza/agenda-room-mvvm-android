@@ -2,6 +2,7 @@ package br.com.tmdev.agenda.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,7 @@ import br.com.tmdev.agenda.entities.User
 import br.com.tmdev.agenda.presenters.list.ContractList
 import br.com.tmdev.agenda.presenters.list.ListPresenter
 import br.com.tmdev.agenda.recycler.AgendaAdapter
+import br.com.tmdev.agenda.repository.AgendaRepository
 import br.com.tmdev.agenda.ui.form.FormActivity
 import br.com.tmdev.agenda.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,10 +35,11 @@ class ListUserActivity : AppCompatActivity(), ContractList.View {
         mListPresenter = ListPresenter(this)
 
         mListViewModel?.getAllUsers()?.observe(this, Observer {
+            Log.w("script", "users: $it")
             mListPresenter?.setListUsers(it)
         })
 
-        mAgendaAdapter = AgendaAdapter(emptyList())
+        mAgendaAdapter = AgendaAdapter(ArrayList())
 
         mRecycler = findViewById(R.id.recycler_view_id)
         mRecycler?.layoutManager = LinearLayoutManager(this)
@@ -46,6 +49,18 @@ class ListUserActivity : AppCompatActivity(), ContractList.View {
         floatingActionButton.setOnClickListener {
             startActivity(Intent(this, FormActivity::class.java))
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+//        val repository = AgendaRepository(this)
+//
+//        repository.getAllUsers()?.observe(this, Observer {
+//            Log.w("script", "users: $it")
+//            mListPresenter?.setListUsers(it)
+//        })
 
     }
 

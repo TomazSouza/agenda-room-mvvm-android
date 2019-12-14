@@ -10,7 +10,7 @@
 
         <variable
             name="formPresenter"
-            type="br.com.tmdev.agenda.presenters.ContractForm.Presenter" />
+            type="br.com.tmdev.agenda.presenters.form.ContractForm.Presenter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

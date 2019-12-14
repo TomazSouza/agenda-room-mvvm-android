@@ -7,6 +7,8 @@ import androidx.databinding.library.baseAdapters.BR
 
 open class User : BaseObservable() {
 
+    var id: Int = 0
+
     @get:Bindable
     var name: String? = ""
         set(value) {

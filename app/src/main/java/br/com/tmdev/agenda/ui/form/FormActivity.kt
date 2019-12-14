@@ -1,16 +1,15 @@
 package br.com.tmdev.agenda.ui.form
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.databinding.ActivityFormBinding
 import br.com.tmdev.agenda.entities.User
-import br.com.tmdev.agenda.presenters.ContractForm
-import br.com.tmdev.agenda.presenters.FormPresenter
+import br.com.tmdev.agenda.presenters.form.ContractForm
+import br.com.tmdev.agenda.presenters.form.FormPresenter
 
-open class FormActivity : AppCompatActivity(), ContractForm.View {
+open class FormActivity : AppCompatActivity(), ContractForm {
 
     private var mFormBinding: ActivityFormBinding? = null
 
@@ -21,13 +20,7 @@ open class FormActivity : AppCompatActivity(), ContractForm.View {
         mFormBinding?.formPresenter = FormPresenter(this)
         mFormBinding?.user = User()
 
-    }
-
-    override fun nextActivity() {
-        Toast.makeText(this, "Clicado", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun showProgress(show: Boolean) {
+        val mFormHelper = FormHelper(this)
 
     }
 

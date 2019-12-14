@@ -33,4 +33,10 @@ class AgendaAdapter : RecyclerView.Adapter<AgendaAdapter.ViewHolder> {
         holder.mTextName?.text = item.name
     }
 
+    fun updateListUsers(userList: List<User>?) {
+       if (userList != null) {
+           mAgendaItem = userList
+       }
+    }
+
 }

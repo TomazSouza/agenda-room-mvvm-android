@@ -20,4 +20,8 @@ open class UserEntity {
     @ColumnInfo(name = "email")
     var email: String = ""
 
+    override fun toString(): String {
+        return "UserEntity(id=$id, name='$name', contact='$contact', email='$email')"
+    }
+
 }

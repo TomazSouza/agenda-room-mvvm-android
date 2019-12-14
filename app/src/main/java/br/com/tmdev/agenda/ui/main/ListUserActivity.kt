@@ -34,11 +34,6 @@ class ListUserActivity : AppCompatActivity(), ContractList.View {
         mListViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         mListPresenter = ListPresenter(this)
 
-        mListViewModel?.getAllUsers()?.observe(this, Observer {
-            Log.w("script", "users: $it")
-            mListPresenter?.setListUsers(it)
-        })
-
         mAgendaAdapter = AgendaAdapter(ArrayList())
 
         mRecycler = findViewById(R.id.recycler_view_id)
@@ -46,21 +41,13 @@ class ListUserActivity : AppCompatActivity(), ContractList.View {
         mRecycler?.setHasFixedSize(true)
         mRecycler?.adapter = mAgendaAdapter
 
+        mListViewModel?.getAllUsers()?.observe(this, Observer {
+            mListPresenter?.setListUsers(it)
+        })
+
         floatingActionButton.setOnClickListener {
             startActivity(Intent(this, FormActivity::class.java))
         }
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-//        val repository = AgendaRepository(this)
-//
-//        repository.getAllUsers()?.observe(this, Observer {
-//            Log.w("script", "users: $it")
-//            mListPresenter?.setListUsers(it)
-//        })
 
     }
 

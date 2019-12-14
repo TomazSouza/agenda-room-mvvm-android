@@ -23,12 +23,6 @@ open class FormActivity : AppCompatActivity(), ContractForm {
         mFormBinding?.formPresenter = FormPresenter(this,  AgendaRepository(this))
         mFormBinding?.user = User()
 
-//        val mAgendaRepository = AgendaRepository(this)
-//
-//        mAgendaRepository.getAllUsers()?.observe(this, Observer {
-//            Log.w("script", "users: $it")
-//        })
-
         val mFormHelper = FormHelper(this)
 
     }

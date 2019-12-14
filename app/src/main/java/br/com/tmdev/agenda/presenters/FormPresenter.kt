@@ -4,13 +4,9 @@ import android.text.TextUtils
 import android.util.Log
 import br.com.tmdev.agenda.entities.User
 
-open class FormPresenter : ContractForm.Presenter {
+open class FormPresenter(viewImpl: ContractForm.View) : ContractForm.Presenter {
 
-    private var mViewImpl: ContractForm.View? = null
-
-    constructor(viewImpl: ContractForm.View) : super() {
-        this.mViewImpl = viewImpl
-    }
+    private var mViewImpl: ContractForm.View? = viewImpl
 
     override fun addDataUser(user: User) {
 

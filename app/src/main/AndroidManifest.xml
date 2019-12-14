@@ -22,7 +22,7 @@
         <activity android:name=".ui.form.FormActivity"></activity>
 
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.main.ListUserActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,6 +1,5 @@
 package br.com.tmdev.agenda.presenters.form
 
-import android.util.Log
 import br.com.tmdev.agenda.db.UserEntity
 import br.com.tmdev.agenda.entities.User
 import br.com.tmdev.agenda.repository.AgendaRepository
@@ -9,6 +8,7 @@ class FormPresenter : ContractForm.Presenter {
 
     private var mContractForm: ContractForm? = null
     private var mAgendaRepository: AgendaRepository? = null
+    private var mViewImp: ContractForm.View? = null
 
     constructor(
         mContractForm: ContractForm?,
@@ -24,11 +24,12 @@ class FormPresenter : ContractForm.Presenter {
         userEntity.contact = user.contact.toString()
         userEntity.email = user.email.toString()
 
-       mAgendaRepository?.insert(userEntity)
+       this.mAgendaRepository?.insert(userEntity)
+        this.mViewImp?.nextActivity()
     }
 
     override fun attach(view: ContractForm.View) {
-
+        this.mViewImp = view
     }
 
     override fun unsubscribe() {

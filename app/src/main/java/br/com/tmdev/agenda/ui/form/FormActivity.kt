@@ -1,10 +1,8 @@
 package br.com.tmdev.agenda.ui.form
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.databinding.ActivityFormBinding
 import br.com.tmdev.agenda.entities.User
@@ -12,7 +10,7 @@ import br.com.tmdev.agenda.presenters.form.ContractForm
 import br.com.tmdev.agenda.presenters.form.FormPresenter
 import br.com.tmdev.agenda.repository.AgendaRepository
 
-open class FormActivity : AppCompatActivity(), ContractForm {
+open class FormActivity : AppCompatActivity(), ContractForm, ContractForm.View {
 
     private var mFormBinding: ActivityFormBinding? = null
 
@@ -23,8 +21,18 @@ open class FormActivity : AppCompatActivity(), ContractForm {
         mFormBinding?.formPresenter = FormPresenter(this,  AgendaRepository(this))
         mFormBinding?.user = User()
 
+        mFormBinding?.formPresenter?.attach(this)
+
         val mFormHelper = FormHelper(this)
 
+    }
+
+    override fun nextActivity() {
+        onBackPressed()
+    }
+
+    override fun showProgress(show: Boolean) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

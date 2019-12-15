@@ -1,4 +1,4 @@
-package br.com.tmdev.agenda.presenters
+package br.com.tmdev.agenda.base
 
 interface BaseContract {
 

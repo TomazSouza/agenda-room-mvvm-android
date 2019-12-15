@@ -2,7 +2,7 @@ package br.com.tmdev.agenda.presenters.list
 
 import br.com.tmdev.agenda.db.UserEntity
 import br.com.tmdev.agenda.entities.User
-import br.com.tmdev.agenda.presenters.BaseContract
+import br.com.tmdev.agenda.base.BaseContract
 
 interface ContractList {
 

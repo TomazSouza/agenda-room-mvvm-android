@@ -1,7 +1,7 @@
 package br.com.tmdev.agenda.presenters.form
 
 import br.com.tmdev.agenda.entities.User
-import br.com.tmdev.agenda.presenters.BaseContract
+import br.com.tmdev.agenda.base.BaseContract
 
 interface ContractForm {
 

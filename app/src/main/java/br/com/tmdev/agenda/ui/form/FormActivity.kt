@@ -32,7 +32,7 @@ open class FormActivity : AppCompatActivity(), ContractForm, ContractForm.View {
     }
 
     override fun showProgress(show: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 }

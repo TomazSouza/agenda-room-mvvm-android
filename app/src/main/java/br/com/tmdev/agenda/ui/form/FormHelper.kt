@@ -14,7 +14,7 @@ class FormHelper (itemView: FormActivity) : TextWatcher {
     private val mEditFieldContato: TextInputEditText = itemView.findViewById(R.id.edit_field_contact_id)
     private val mEditFieldEmail: TextInputEditText = itemView.findViewById(R.id.edit_field_email_id)
 
-    val mBtnSave: AppCompatButton = itemView.findViewById(R.id.btn_save_id)
+    private val mBtnSave: AppCompatButton = itemView.findViewById(R.id.btn_save_id)
 
     init {
         mEditFieldNome.addTextChangedListener(this)

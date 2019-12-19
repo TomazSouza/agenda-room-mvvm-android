@@ -60,7 +60,7 @@ class ListUserActivity : AppCompatActivity(), ContractList.View, Callback<Status
 
             override fun onResponse(call: Call<QueryAlunos>, response: Response<QueryAlunos>) {
                 for (aluno in response.body()?.alunos!!) {
-                Log.w(TAG, "result: ${aluno}")
+                Log.w(TAG, "result: $aluno")
 
                 }
             }

@@ -12,19 +12,18 @@ import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.entities.User
 import br.com.tmdev.agenda.gateways.AgendaService
 import br.com.tmdev.agenda.gateways.RetrofitInit
+import br.com.tmdev.agenda.gateways.model.GetAgendaSevice
 import br.com.tmdev.agenda.gateways.model.QueryAlunos
 import br.com.tmdev.agenda.gateways.model.StatusApi
 import br.com.tmdev.agenda.presenters.list.ContractList
 import br.com.tmdev.agenda.presenters.list.ListPresenter
 import br.com.tmdev.agenda.recycler.AgendaAdapter
-import br.com.tmdev.agenda.repository.AgendaRepository
 import br.com.tmdev.agenda.ui.form.FormActivity
 import br.com.tmdev.agenda.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 
 class ListUserActivity : AppCompatActivity(), ContractList.View, Callback<StatusApi> {
 
@@ -38,33 +37,6 @@ class ListUserActivity : AppCompatActivity(), ContractList.View, Callback<Status
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val retrofit= RetrofitInit().getInstance()
-
-        val result = retrofit.create(AgendaService::class.java)
-        result.getStatusApi()?.enqueue(object : Callback<StatusApi>{
-            override fun onFailure(call: Call<StatusApi>, t: Throwable) {
-                Log.w(TAG, "result: ${t.message}")
-
-            }
-
-            override fun onResponse(call: Call<StatusApi>, response: Response<StatusApi>) {
-                Log.w(TAG, "result: ${response.body()}")
-            }
-        })
-
-        result.buscarTodos()?.enqueue(object : Callback<QueryAlunos> {
-            override fun onFailure(call: Call<QueryAlunos>, t: Throwable) {
-                Log.w(TAG, "result: ${t.message}")
-            }
-
-            override fun onResponse(call: Call<QueryAlunos>, response: Response<QueryAlunos>) {
-                for (aluno in response.body()?.alunos!!) {
-                Log.w(TAG, "result: $aluno")
-
-                }
-            }
-        })
 
         mListViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         mListPresenter = ListPresenter(this)
@@ -84,6 +56,37 @@ class ListUserActivity : AppCompatActivity(), ContractList.View, Callback<Status
             startActivity(Intent(this, FormActivity::class.java))
         }
 
+    }
+
+    fun retrofit() {
+        GetAgendaSevice.getInstance()?.getAgendaService()
+
+        val retrofit = RetrofitInit().getInstance()
+
+        val result = retrofit.create(AgendaService::class.java)
+        result.getStatusApi()?.enqueue(object : Callback<StatusApi> {
+            override fun onFailure(call: Call<StatusApi>, t: Throwable) {
+                Log.w(TAG, "result: ${t.message}")
+
+            }
+
+            override fun onResponse(call: Call<StatusApi>, response: Response<StatusApi>) {
+                Log.w(TAG, "result: ${response.body()}")
+            }
+        })
+
+        result.buscarTodos()?.enqueue(object : Callback<QueryAlunos> {
+            override fun onFailure(call: Call<QueryAlunos>, t: Throwable) {
+                Log.w(TAG, "result: ${t.message}")
+            }
+
+            override fun onResponse(call: Call<QueryAlunos>, response: Response<QueryAlunos>) {
+                for (aluno in response.body()?.alunos!!) {
+                    Log.w(TAG, "result: $aluno")
+
+                }
+            }
+        })
     }
 
     override fun updateListEmpty() {

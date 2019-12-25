@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.databinding.ActivityFormBinding
 import br.com.tmdev.agenda.entities.User
+import br.com.tmdev.agenda.gateways.model.GetAgendaSevice
 import br.com.tmdev.agenda.presenters.form.ContractForm
 import br.com.tmdev.agenda.presenters.form.FormPresenter
 import br.com.tmdev.agenda.repository.AgendaRepository

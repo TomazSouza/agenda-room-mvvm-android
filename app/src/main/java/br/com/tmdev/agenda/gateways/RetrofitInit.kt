@@ -12,6 +12,4 @@ open class RetrofitInit {
             .build()
     }
 
-
-
 }

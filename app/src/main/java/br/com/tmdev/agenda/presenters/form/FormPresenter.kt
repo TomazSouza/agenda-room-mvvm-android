@@ -6,7 +6,6 @@ import br.com.tmdev.agenda.entities.User
 import br.com.tmdev.agenda.gateways.AgendaService
 import br.com.tmdev.agenda.gateways.RetrofitInit
 import br.com.tmdev.agenda.gateways.model.Aluno
-import br.com.tmdev.agenda.gateways.model.StatusApi
 import br.com.tmdev.agenda.gateways.model.StatusResponse
 import br.com.tmdev.agenda.repository.AgendaRepository
 import retrofit2.Call
@@ -15,15 +14,14 @@ import retrofit2.Response
 
 class FormPresenter : ContractForm.Presenter {
 
-    private var mContractForm: ContractForm? = null
     private var mAgendaRepository: AgendaRepository? = null
     private var mViewImp: ContractForm.View? = null
 
     constructor(
-        mContractForm: ContractForm?,
+        contractForm: ContractForm.View?,
         agendaRepository: AgendaRepository
     ) : super() {
-        this.mContractForm = mContractForm
+        this.mViewImp = contractForm
         this.mAgendaRepository = agendaRepository
     }
 
@@ -49,7 +47,10 @@ class FormPresenter : ContractForm.Presenter {
                 Log.w("", "result: ${t.message}")
             }
 
-            override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {
+            override fun onResponse(
+                call: Call<StatusResponse>,
+                response: Response<StatusResponse>
+            ) {
                 Log.w("", "result: ${response.body()}")
                 mAgendaRepository?.insert(userEntity)
             }

@@ -11,7 +11,7 @@ import br.com.tmdev.agenda.presenters.form.ContractForm
 import br.com.tmdev.agenda.presenters.form.FormPresenter
 import br.com.tmdev.agenda.repository.AgendaRepository
 
-open class FormActivity : AppCompatActivity(), ContractForm, ContractForm.View {
+open class FormActivity : AppCompatActivity(), ContractForm.View {
 
     private var mFormBinding: ActivityFormBinding? = null
 

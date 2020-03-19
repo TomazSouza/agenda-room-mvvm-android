@@ -7,6 +7,7 @@ import androidx.appcompat.widget.AppCompatButton
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.entities.User
 import com.google.android.material.textfield.TextInputEditText
+import org.apache.commons.lang3.StringUtils
 
 class FormHelper (itemView: FormActivity) : TextWatcher {
 
@@ -28,15 +29,15 @@ class FormHelper (itemView: FormActivity) : TextWatcher {
 
     fun fieldIsEmpty(): Boolean {
 
-        if (TextUtils.isEmpty(mEditFieldNome.text.toString().trim())) {
+        if (StringUtils.isEmpty(mEditFieldNome.text.toString().trim())) {
             return true
         }
 
-        if (TextUtils.isEmpty(mEditFieldEmail.text.toString().trim())) {
+        if (StringUtils.isEmpty(mEditFieldEmail.text.toString().trim())) {
             return true
         }
 
-        if (TextUtils.isEmpty(mEditFieldContato.text.toString().trim())) {
+        if (StringUtils.isEmpty(mEditFieldContato.text.toString().trim())) {
             return true
         }
 

@@ -10,8 +10,10 @@ import br.com.tmdev.agenda.gateways.model.GetAgendaSevice
 import br.com.tmdev.agenda.presenters.form.ContractForm
 import br.com.tmdev.agenda.presenters.form.FormPresenter
 import br.com.tmdev.agenda.repository.AgendaRepository
+import br.com.tmdev.agenda.ui.base.BaseActivity
+import br.com.tmdev.agenda.ui.main.ListUserActivity
 
-open class FormActivity : AppCompatActivity(), ContractForm.View {
+open class FormActivity : BaseActivity(), ContractForm.View {
 
     private var mFormBinding: ActivityFormBinding? = null
 
@@ -29,7 +31,7 @@ open class FormActivity : AppCompatActivity(), ContractForm.View {
     }
 
     override fun nextActivity() {
-        onBackPressed()
+      onBackPressed()
     }
 
     override fun showProgress(show: Boolean) {

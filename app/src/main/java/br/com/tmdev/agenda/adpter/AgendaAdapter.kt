@@ -1,4 +1,4 @@
-package br.com.tmdev.agenda.recycler
+package br.com.tmdev.agenda.adpter
 
 import android.view.LayoutInflater
 import android.view.View

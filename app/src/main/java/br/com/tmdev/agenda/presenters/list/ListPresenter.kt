@@ -11,17 +11,11 @@ class ListPresenter : ContractList.Presenter {
         this.mViewImpl = viewImpl
     }
 
-
-    override fun userUpdateList() {
-
-    }
-
     override fun attach(view: ContractList.View) {
         this.mViewImpl = view
     }
 
     override fun unsubscribe() {
-
     }
 
     override fun setListUsers(userList: List<UserEntity>?) {

@@ -12,7 +12,6 @@ interface ContractList {
     }
 
     interface Presenter : BaseContract.Presenter<View> {
-        fun userUpdateList()
         fun setListUsers(userList: List<UserEntity>?)
     }
 

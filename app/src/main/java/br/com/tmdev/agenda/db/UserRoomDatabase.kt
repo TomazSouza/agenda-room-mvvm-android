@@ -21,8 +21,7 @@ abstract class UserRoomDatabase : RoomDatabase() {
                         context?.applicationContext!!,
                         UserRoomDatabase::class.java,
                         "agenda_db"
-                    )
-                        .build()
+                    ).build()
                 }
             }
             return INSTANCE

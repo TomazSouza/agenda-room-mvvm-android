@@ -1,15 +1,12 @@
 package br.com.tmdev.agenda.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.entities.User
-import br.com.tmdev.agenda.presenters.list.ContractList
-import br.com.tmdev.agenda.presenters.list.ListPresenter
 import br.com.tmdev.agenda.adpter.AgendaAdapter
 import br.com.tmdev.agenda.ui.base.BaseActivity
 import br.com.tmdev.agenda.ui.form.FormActivity

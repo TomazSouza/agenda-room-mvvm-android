@@ -11,14 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 
 open class BaseActivity : AppCompatActivity() {
 
-    companion object {
-        var countStart = 0
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        countStart++
     }
 
     fun openActivity(@NonNull activity: AppCompatActivity, @NonNull clazz: Class<*>, finish: Boolean = true, args: Bundle?) {

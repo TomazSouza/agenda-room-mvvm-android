@@ -8,12 +8,12 @@ import br.com.tmdev.agenda.db.UserRoomDatabase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-open class AgendaRepository {
+open class AgendaRepository(context: Context) {
 
     private var mUserDao: UserDao? = null
 
-    constructor(context: Context) : super() {
-        val db = UserRoomDatabase.getDatabase(context)
+    init {
+        val db = UserRoomDatabase.getInstance(context)
         mUserDao = db?.getUserDao()
     }
 

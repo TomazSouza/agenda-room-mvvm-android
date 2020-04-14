@@ -8,13 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.entities.User
 
-class AgendaAdapter : RecyclerView.Adapter<AgendaAdapter.ViewHolder> {
+class AgendaAdapter(agendaItem: MutableList<User>) : RecyclerView.Adapter<AgendaAdapter.ViewHolder>() {
 
-    private var mAgendaItem: MutableList<User> = mutableListOf()
-
-    constructor(agendaItem: MutableList<User>) : super() {
-        this.mAgendaItem = agendaItem
-    }
+    private var mAgendaItem: MutableList<User> = agendaItem
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val mTextName: AppCompatTextView? = itemView.findViewById(R.id.text_view_name)

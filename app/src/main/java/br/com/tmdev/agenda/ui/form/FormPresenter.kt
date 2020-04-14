@@ -1,4 +1,4 @@
-package br.com.tmdev.agenda.presenters.form
+package br.com.tmdev.agenda.ui.form
 
 import br.com.tmdev.agenda.db.UserEntity
 import br.com.tmdev.agenda.entities.User

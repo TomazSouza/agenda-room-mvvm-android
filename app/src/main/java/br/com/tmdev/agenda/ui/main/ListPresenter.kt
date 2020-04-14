@@ -1,9 +1,10 @@
-package br.com.tmdev.agenda.presenters.list
+package br.com.tmdev.agenda.ui.main
 
 import br.com.tmdev.agenda.db.UserEntity
 import br.com.tmdev.agenda.entities.User
 
-class ListPresenter : ContractList.Presenter {
+class ListPresenter :
+    ContractList.Presenter {
 
     private var mViewImpl: ContractList.View? = null
 

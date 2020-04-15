@@ -21,7 +21,8 @@ open class BaseActivity : AppCompatActivity() {
         if (args == null) {
             activity.startActivity(intent)
         } else{
-            activity.startActivity(intent, args)
+            intent.putExtras(args)
+            activity.startActivity(intent)
         }
 
         if (finish)  {

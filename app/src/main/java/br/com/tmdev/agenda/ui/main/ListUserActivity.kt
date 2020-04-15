@@ -1,6 +1,8 @@
 package br.com.tmdev.agenda.ui.main
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.entities.User
 import br.com.tmdev.agenda.adpter.AgendaAdapter
+import br.com.tmdev.agenda.constants.BundleConstants
 import br.com.tmdev.agenda.ui.base.BaseActivity
 import br.com.tmdev.agenda.ui.form.FormActivity
 import br.com.tmdev.agenda.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-class ListUserActivity : BaseActivity(), ContractList.View {
+class ListUserActivity : BaseActivity(), ContractList.View, AgendaAdapter.OnClickListener {
 
     companion object {
         private val TAG: String? = ListUserActivity::class.simpleName
@@ -31,7 +34,7 @@ class ListUserActivity : BaseActivity(), ContractList.View {
         mListViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         mListPresenter = ListPresenter(this)
 
-        mAgendaAdapter = AgendaAdapter(ArrayList())
+        mAgendaAdapter = AgendaAdapter(ArrayList(), this)
 
         mRecycler = findViewById(R.id.recycler_view_id)
         mRecycler?.layoutManager = LinearLayoutManager(this)
@@ -48,15 +51,24 @@ class ListUserActivity : BaseActivity(), ContractList.View {
 
     }
 
-    override fun updateListEmpty() {
-    }
+    override fun updateListEmpty() {}
 
     override fun updateList(userList: MutableList<User>?) {
         mAgendaAdapter?.updateListUsers(userList)
     }
 
-    override fun showProgress(show: Boolean) {
+    override fun showProgress(show: Boolean) {}
 
+    override fun editData(id: Int) {
+
+        val bundle = Bundle()
+        bundle.putInt(BundleConstants.KEY.ID_USER, id)
+
+        openActivity(this, FormActivity::class.java, true, bundle)
+    }
+
+    override fun edit(view: View, position: Int) {
+        mListPresenter?.setPositionEdit(position)
     }
 
 }

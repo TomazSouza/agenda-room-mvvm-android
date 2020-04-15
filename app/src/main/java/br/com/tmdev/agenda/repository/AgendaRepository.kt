@@ -29,4 +29,8 @@ open class AgendaRepository(context: Context) {
         return mUserDao?.getUserById(id)
     }
 
+    fun update(userEntity: UserEntity) = GlobalScope.launch {
+        mUserDao?.udpate(userEntity.id, userEntity.name, userEntity.email, userEntity.contact)
+    }
+
 }

@@ -7,6 +7,7 @@ import br.com.tmdev.agenda.databinding.ActivityFormBinding
 import br.com.tmdev.agenda.entities.User
 import br.com.tmdev.agenda.repository.AgendaRepository
 import br.com.tmdev.agenda.ui.base.BaseActivity
+import br.com.tmdev.agenda.ui.main.ListUserActivity
 
 open class FormActivity : BaseActivity(), ContractForm.View {
 
@@ -17,20 +18,27 @@ open class FormActivity : BaseActivity(), ContractForm.View {
 
         mFormBinding = DataBindingUtil.setContentView(this, R.layout.activity_form)
         mFormBinding?.formPresenter = FormPresenter(this, AgendaRepository(this))
-        mFormBinding?.user = User()
+        mFormBinding?.formPresenter?.editData(intent.extras)
 
+        mFormBinding?.user = User()
         mFormBinding?.formPresenter?.attach(this)
 
         val mFormHelper = FormHelper(this)
 
     }
 
+    override fun updateUi(user: User?) {
+        mFormBinding?.user = user
+    }
+
     override fun nextActivity() {
       onBackPressed()
     }
 
-    override fun showProgress(show: Boolean) {
-
+    override fun onBackPressed() {
+        openActivity(FormActivity@this, ListUserActivity::class.java, true, null)
     }
+
+    override fun showProgress(show: Boolean) {}
 
 }

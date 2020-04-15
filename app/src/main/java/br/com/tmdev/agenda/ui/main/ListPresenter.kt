@@ -3,10 +3,10 @@ package br.com.tmdev.agenda.ui.main
 import br.com.tmdev.agenda.db.UserEntity
 import br.com.tmdev.agenda.entities.User
 
-class ListPresenter :
-    ContractList.Presenter {
+class ListPresenter : ContractList.Presenter {
 
     private var mViewImpl: ContractList.View? = null
+    private var mParseUserList: MutableList<User> = mutableListOf()
 
     constructor(viewImpl: ContractList.View?) {
         this.mViewImpl = viewImpl
@@ -20,10 +20,7 @@ class ListPresenter :
     }
 
     override fun setListUsers(userList: List<UserEntity>?) {
-
         if (userList != null && userList.isNotEmpty()) {
-            val parseUserList: MutableList<User> = mutableListOf()
-
             for (userEntity in userList) {
 
                 val user = User()
@@ -31,14 +28,17 @@ class ListPresenter :
                 user.name = userEntity.name
                 user.contact = userEntity.contact
                 user.email = userEntity.email
-                parseUserList.add(user)
+                mParseUserList.add(user)
             }
-
-            mViewImpl?.updateList(parseUserList)
+            mViewImpl?.updateList(mParseUserList)
         } else {
             mViewImpl?.updateListEmpty()
         }
+    }
 
+    override fun setPositionEdit(position: Int) {
+        val user = mParseUserList[position]
+        mViewImpl?.editData(user.id)
     }
 
 }

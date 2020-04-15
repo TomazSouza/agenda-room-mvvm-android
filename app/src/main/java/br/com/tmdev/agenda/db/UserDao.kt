@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface UserDao {
@@ -19,5 +20,8 @@ interface UserDao {
 
     @Query("SELECT * FROM user_table WHERE id = :id")
     fun  getUserById(id: Int): UserEntity?
+
+    @Query("UPDATE user_table SET name = :name, email = :email, contact = :contact WHERE id = :id")
+    suspend fun udpate(id: Int, name: String, email: String, contact: String);
 
 }

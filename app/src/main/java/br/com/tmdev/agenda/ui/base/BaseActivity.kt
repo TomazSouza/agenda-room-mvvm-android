@@ -16,20 +16,6 @@ open class BaseActivity : AppCompatActivity() {
 
     }
 
-    fun openActivity(@NonNull activity: AppCompatActivity, @NonNull clazz: Class<*>, finish: Boolean = true, args: Bundle?) {
-        val intent = Intent(activity, clazz)
-        if (args == null) {
-            activity.startActivity(intent)
-        } else{
-            intent.putExtras(args)
-            activity.startActivity(intent)
-        }
-
-        if (finish)  {
-            activity.finish()
-        }
-    }
-
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         return super.onTouchEvent(event)
     }

@@ -27,7 +27,7 @@ class FormHelper (itemView: FormActivity) : TextWatcher {
         }
     }
 
-    fun fieldIsEmpty(): Boolean {
+    private fun fieldIsEmpty(): Boolean {
 
         if (StringUtils.isEmpty(mEditFieldNome.text.toString().trim())) {
             return true

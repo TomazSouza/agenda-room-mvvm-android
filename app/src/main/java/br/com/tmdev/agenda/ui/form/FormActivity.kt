@@ -37,7 +37,6 @@ open class FormActivity : BaseActivity(), ContractForm.View {
     }
 
     override fun onBackPressed() {
-        //OpenActivity.start(this, ListUserActivity::class.java, true, null)
         finish()
     }
 

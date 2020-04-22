@@ -32,8 +32,6 @@ class ListPresenter : ContractList.Presenter {
 
             mParseUserList.clear()
 
-
-
             for (userEntity in userList) {
 
                 val user = User()
@@ -43,6 +41,7 @@ class ListPresenter : ContractList.Presenter {
                 user.email = userEntity.email
                 mParseUserList.add(user)
             }
+
             mViewImpl?.showRecycler(true)
             mViewImpl?.updatedList(mParseUserList)
         } else {

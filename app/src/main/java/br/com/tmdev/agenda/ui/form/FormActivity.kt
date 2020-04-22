@@ -20,10 +20,11 @@ open class FormActivity : BaseActivity(), ContractForm.View {
         mFormBinding = DataBindingUtil.setContentView(this, R.layout.activity_form)
         mFormBinding?.formPresenter = FormPresenter(this, AgendaRepository(this))
 
-
         mFormBinding?.user = User()
         mFormBinding?.formPresenter?.attach(this)
+
         val mFormHelper = FormHelper(this)
+
         mFormBinding?.formPresenter?.editData(intent.extras)
     }
 
@@ -32,11 +33,12 @@ open class FormActivity : BaseActivity(), ContractForm.View {
     }
 
     override fun nextActivity() {
-      onBackPressed()
+        onBackPressed()
     }
 
     override fun onBackPressed() {
-        OpenActivity.start(this, ListUserActivity::class.java, true, null)
+        //OpenActivity.start(this, ListUserActivity::class.java, true, null)
+        finish()
     }
 
     override fun showProgress(show: Boolean) {

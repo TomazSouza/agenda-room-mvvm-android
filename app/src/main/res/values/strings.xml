@@ -4,4 +4,5 @@
     <string name="text_contact">Contato</string>
     <string name="text_mail">E-mail</string>
     <string name="text_name">Nome</string>
+    <string name="item_delete">Delete</string>
 </resources>

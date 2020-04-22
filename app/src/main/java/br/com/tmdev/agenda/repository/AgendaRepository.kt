@@ -33,4 +33,8 @@ open class AgendaRepository(context: Context) {
         mUserDao?.udpate(userEntity.id, userEntity.name, userEntity.email, userEntity.contact)
     }
 
+    fun deleteById(id: Int) = GlobalScope.launch {
+        mUserDao?.deleteById(id)
+    }
+
 }

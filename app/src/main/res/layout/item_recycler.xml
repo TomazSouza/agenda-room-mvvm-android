@@ -13,7 +13,7 @@
     <RelativeLayout
         android:id="@+id/viewBackground"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/bgRowBackground">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -48,7 +48,7 @@
     <RelativeLayout
         android:id="@+id/viewForegroundId"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
         android:background="@android:color/white"
         android:visibility="visible"
@@ -59,8 +59,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:text="Aluno Aluno"
+            android:text="Nome"
             android:textStyle="bold"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="12dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="E-mail"
+            android:textStyle="bold"
+            android:layout_below="@id/text_view_name"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="12dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="Contato"
+            android:textStyle="bold"
+            android:layout_below="@id/text_view_email"
             tools:layout_editor_absoluteX="12dp"
             tools:layout_editor_absoluteY="12dp" />
 

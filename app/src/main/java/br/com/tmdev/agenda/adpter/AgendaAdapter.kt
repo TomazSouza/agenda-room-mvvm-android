@@ -8,7 +8,6 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.entities.User
-import br.com.tmdev.agenda.generated.callback.OnClickListener
 import com.google.android.flexbox.FlexboxLayout
 
 class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListener) : RecyclerView.Adapter<AgendaAdapter.ViewHolder>() {
@@ -19,6 +18,8 @@ class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListe
     class ViewHolder : RecyclerView.ViewHolder {
 
         var mTextName: AppCompatTextView? = null
+        var mTextEmail: AppCompatTextView? = null
+        var mTextContact: AppCompatTextView? = null
         var mItemView: View? = null
 
         var mViewBackground: RelativeLayout? = null
@@ -29,6 +30,8 @@ class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListe
             mItemView = itemView;
 
             mTextName = itemView.findViewById(R.id.text_view_name)
+            mTextEmail = itemView.findViewById(R.id.text_view_email)
+            mTextContact = itemView.findViewById(R.id.text_view_contact)
 
             mViewBackground = itemView.findViewById(R.id.viewBackground)
             mViewForeground = itemView.findViewById(R.id.viewForegroundId)
@@ -47,6 +50,8 @@ class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListe
         val item = mAgendaItem[position]
 
         holder.mTextName?.text = item.name
+        holder.mTextEmail?.text = item.email
+        holder.mTextContact?.text = item.contact
 
         holder.mItemView?.setOnClickListener { v -> mOnClickListener.edit(v, position) }
     }
@@ -61,13 +66,11 @@ class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListe
     fun removeItem(position: Int) {
         mAgendaItem?.removeAt(position)
         notifyItemRemoved(position)
-        //notifyItemRangeChanged(position, listItem?.size!!)
     }
 
     fun restoreItem(item: User, position: Int) {
         mAgendaItem?.add(position, item)
         notifyItemInserted(position)
-        //notifyItemRangeChanged(position, listItem?.size!!)
     }
 
     interface OnClickListener {

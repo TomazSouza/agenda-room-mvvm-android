@@ -8,12 +8,12 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.entities.User
-import com.google.android.flexbox.FlexboxLayout
 
-class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListener) : RecyclerView.Adapter<AgendaAdapter.ViewHolder>() {
+class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListener) :
+    RecyclerView.Adapter<AgendaAdapter.ViewHolder>() {
 
     private var mAgendaItem: MutableList<User> = agendaItem
-    private var mOnClickListener: OnClickListener =  onClickListener
+    private var mOnClickListener: OnClickListener = onClickListener
 
     class ViewHolder : RecyclerView.ViewHolder {
 
@@ -40,7 +40,8 @@ class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListe
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recycler, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_recycler, parent, false)
         return ViewHolder(view)
     }
 
@@ -57,10 +58,10 @@ class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListe
     }
 
     fun updateListUsers(userList: MutableList<User>?) {
-       if (userList != null && userList.isNotEmpty()) {
-           mAgendaItem = userList
-           notifyDataSetChanged()
-       }
+        if (userList != null && userList.isNotEmpty()) {
+            mAgendaItem = userList
+            notifyDataSetChanged()
+        }
     }
 
     fun removeItem(position: Int) {

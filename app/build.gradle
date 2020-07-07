@@ -8,34 +8,52 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "br.com.tmdev.agenda"
         minSdkVersion 16
         targetSdkVersion 29
+
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
+
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            keyAlias 'aliasKeyAgrm'
+            keyPassword 'tmSpsZO@101'
+            storeFile file('../KeyStoreDir/upload-keystore.jks')
+            storePassword 'tmSpsZO@100'
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
+
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
     }
+
     dataBinding {
         enabled = true
     }
+
 }
 
 dependencies {

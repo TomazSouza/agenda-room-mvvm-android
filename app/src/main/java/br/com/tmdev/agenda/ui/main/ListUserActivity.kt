@@ -34,6 +34,12 @@ class ListUserActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val resource = resources
+        val icons =resource.obtainTypedArray(R.array.icons)
+        val drawable = icons.getDrawable(0)
+        val colors = resource.obtainTypedArray(R.array.colors)
+        val color = colors.getColor(0,0)
+
         mListViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         mListPresenter = ListPresenter(this, AgendaRepository(this))
 

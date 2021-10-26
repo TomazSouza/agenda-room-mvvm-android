@@ -1,19 +1,16 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'kotlin-android-extensions'
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "br.com.tmdev.agenda"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 30
 
         versionCode 1
         versionName "1.0"
@@ -50,17 +47,17 @@ android {
         exclude 'META-INF/atomicfu.kotlin_module'
     }
 
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.6.0'
 
-    def roomVersion = '2.2.5'
+    def roomVersion = "2.3.0"
     def archLifecycleVersion = '2.2.0'
     def androidxArchVersion = '2.1.0'
     def coreTestingVersion = "2.1.0"
@@ -69,11 +66,10 @@ dependencies {
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
 
     // Flexbox Layout
     implementation 'com.google.android:flexbox:2.0.1'
@@ -90,19 +86,20 @@ dependencies {
     androidTestImplementation "androidx.arch.core:core-testing:$androidxArchVersion"
 
     // ViewModel Kotlin support
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
 
     // Coroutines
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+    //api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
-    implementation 'org.apache.commons:commons-lang3:3.10'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation 'junit:junit:4.13.2'
 }

@@ -7,8 +7,8 @@
     android:layout_marginLeft="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginRight="8dp"
-
-    app:cardElevation="1dp">
+    app:cardCornerRadius="4dp"
+    app:cardElevation="8dp">
 
     <RelativeLayout
         android:id="@+id/viewBackground"
@@ -21,11 +21,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:gravity="center"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_toStartOf="@id/deleteIconId"
             android:layout_toLeftOf="@id/deleteIconId"
+            android:gravity="center"
             android:text="@string/item_delete"
             android:textColor="@android:color/white"
             android:textSize="13sp"
@@ -49,17 +49,20 @@
         android:id="@+id/viewForegroundId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:padding="8dp"
         android:background="@android:color/white"
-        android:visibility="visible"
-        android:layout_marginEnd="8dp">
+        android:visibility="visible">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_view_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
             android:padding="4dp"
             android:text="Nome"
+            android:textSize="16sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="12dp"
             tools:layout_editor_absoluteY="12dp" />
@@ -69,9 +72,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_name"
+            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:padding="4dp"
             android:text="E-mail"
+            android:textSize="16sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="12dp"
             tools:layout_editor_absoluteY="12dp" />
@@ -80,10 +85,12 @@
             android:id="@+id/text_view_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_email"
+            android:layout_marginTop="8dp"
             android:padding="4dp"
             android:text="Contato"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_below="@id/text_view_email"
             tools:layout_editor_absoluteX="12dp"
             tools:layout_editor_absoluteY="12dp" />
 

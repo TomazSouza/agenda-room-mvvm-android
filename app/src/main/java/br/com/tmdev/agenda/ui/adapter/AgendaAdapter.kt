@@ -1,4 +1,4 @@
-package br.com.tmdev.agenda.adpter
+package br.com.tmdev.agenda.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

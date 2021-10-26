@@ -22,7 +22,7 @@ interface UserDao {
     fun  getUserById(id: Int): UserEntity?
 
     @Query("UPDATE user_table SET name = :name, email = :email, contact = :contact WHERE id = :id")
-    suspend fun udpate(id: Int, name: String, email: String, contact: String);
+    suspend fun updated(id: Int, name: String, email: String, contact: String)
 
     @Query("DELETE FROM user_table WHERE id = :id")
     suspend fun deleteById(id: Int)

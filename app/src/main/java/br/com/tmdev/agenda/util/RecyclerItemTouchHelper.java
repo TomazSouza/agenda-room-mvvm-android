@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import br.com.tmdev.agenda.adpter.AgendaAdapter;
+import br.com.tmdev.agenda.ui.adapter.AgendaAdapter;
 
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback{
 

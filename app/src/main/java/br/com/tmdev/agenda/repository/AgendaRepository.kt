@@ -30,7 +30,7 @@ open class AgendaRepository(context: Context) {
     }
 
     fun update(userEntity: UserEntity) = GlobalScope.launch {
-        mUserDao?.udpate(userEntity.id, userEntity.name, userEntity.email, userEntity.contact)
+        mUserDao?.updated(userEntity.id, userEntity.name, userEntity.email, userEntity.contact)
     }
 
     fun deleteById(id: Int) = GlobalScope.launch {

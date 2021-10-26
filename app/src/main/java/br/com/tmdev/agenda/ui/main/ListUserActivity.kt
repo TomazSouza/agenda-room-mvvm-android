@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.tmdev.agenda.R
 import br.com.tmdev.agenda.entities.User
-import br.com.tmdev.agenda.adpter.AgendaAdapter
+import br.com.tmdev.agenda.ui.adapter.AgendaAdapter
 import br.com.tmdev.agenda.constants.BundleConstants
 import br.com.tmdev.agenda.repository.AgendaRepository
 import br.com.tmdev.agenda.ui.base.BaseActivity

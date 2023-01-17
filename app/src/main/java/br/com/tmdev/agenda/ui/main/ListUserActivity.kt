@@ -21,8 +21,7 @@ import br.com.tmdev.agenda.util.RecyclerItemTouchHelperListener
 import br.com.tmdev.agenda.viewmodel.ListViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class ListUserActivity : BaseActivity(),
-    ContractList.View,
+class ListUserActivity : BaseActivity(), ContractList.View,
     AgendaAdapter.OnClickListener, RecyclerItemTouchHelperListener {
 
     private var mListViewModel: ListViewModel? = null

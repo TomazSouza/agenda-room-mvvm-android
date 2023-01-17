@@ -20,8 +20,4 @@ open class BaseActivity : AppCompatActivity() {
         return super.onTouchEvent(event)
     }
 
-    fun makeText(activity: Activity, text: String) {
-        Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
-    }
-
 }

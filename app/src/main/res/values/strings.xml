@@ -5,4 +5,5 @@
     <string name="text_mail">E-mail</string>
     <string name="text_name">Nome</string>
     <string name="item_delete">Delete</string>
+    <string name="adicionar_contato">Adicionar contato</string>
 </resources>

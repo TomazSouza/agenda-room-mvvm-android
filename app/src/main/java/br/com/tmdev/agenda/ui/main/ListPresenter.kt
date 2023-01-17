@@ -4,21 +4,14 @@ import br.com.tmdev.agenda.db.UserEntity
 import br.com.tmdev.agenda.entities.User
 import br.com.tmdev.agenda.repository.AgendaRepository
 
-class ListPresenter : ContractList.Presenter {
+class ListPresenter(viewImpl: ContractList.View?, agendaRepository: AgendaRepository) : ContractList.Presenter {
 
-    private var mViewImpl: ContractList.View? = null
+    private var mViewImpl: ContractList.View? = viewImpl
     private var mParseUserList: MutableList<User> = mutableListOf()
-    private var mAgendaRepository: AgendaRepository? = null
+    private var mAgendaRepository: AgendaRepository? = agendaRepository
 
     var mDeletedItem: User? = null
     var mDeletedIndexInt: Int = 0
-
-    constructor(viewImpl: ContractList.View?,
-                agendaRepository: AgendaRepository
-    ) {
-        this.mViewImpl = viewImpl
-        this.mAgendaRepository = agendaRepository
-    }
 
     override fun attach(view: ContractList.View) {
         this.mViewImpl = view

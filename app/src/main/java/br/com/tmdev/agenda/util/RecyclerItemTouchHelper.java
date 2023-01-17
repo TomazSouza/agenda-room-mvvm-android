@@ -12,7 +12,7 @@ import br.com.tmdev.agenda.ui.adapter.AgendaAdapter;
 
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback{
 
-    private RecyclerItemTouchHelperListener mLister;
+    private final RecyclerItemTouchHelperListener mLister;
 
     public RecyclerItemTouchHelper(int dragDirs, int swipeDirs, RecyclerItemTouchHelperListener listener) {
         super(dragDirs, swipeDirs);

@@ -15,27 +15,22 @@ class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListe
     private var mAgendaItem: MutableList<User> = agendaItem
     private var mOnClickListener: OnClickListener = onClickListener
 
-    class ViewHolder : RecyclerView.ViewHolder {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var mTextName: AppCompatTextView? = null
         var mTextEmail: AppCompatTextView? = null
         var mTextContact: AppCompatTextView? = null
-        var mItemView: View? = null
+        var mItemView: View? = itemView
 
         var mViewBackground: RelativeLayout? = null
         var mViewForeground: RelativeLayout? = null
 
-        constructor(itemView: View) : super(itemView) {
-
-            mItemView = itemView;
-
+        init {
             mTextName = itemView.findViewById(R.id.text_view_name)
             mTextEmail = itemView.findViewById(R.id.text_view_email)
             mTextContact = itemView.findViewById(R.id.text_view_contact)
-
             mViewBackground = itemView.findViewById(R.id.viewBackground)
             mViewForeground = itemView.findViewById(R.id.viewForegroundId)
-
         }
     }
 
@@ -65,12 +60,12 @@ class AgendaAdapter(agendaItem: MutableList<User>, onClickListener: OnClickListe
     }
 
     fun removeItem(position: Int) {
-        mAgendaItem?.removeAt(position)
+        mAgendaItem.removeAt(position)
         notifyItemRemoved(position)
     }
 
     fun restoreItem(item: User, position: Int) {
-        mAgendaItem?.add(position, item)
+        mAgendaItem.add(position, item)
         notifyItemInserted(position)
     }
 

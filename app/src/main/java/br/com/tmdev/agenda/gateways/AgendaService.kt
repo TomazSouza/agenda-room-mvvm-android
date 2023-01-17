@@ -9,7 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-open interface AgendaService {
+interface AgendaService {
 
     @GET("/status")
     fun getStatusApi(): Call<StatusApi>?

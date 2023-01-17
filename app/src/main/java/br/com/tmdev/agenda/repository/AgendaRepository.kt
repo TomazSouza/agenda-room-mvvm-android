@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import br.com.tmdev.agenda.db.UserDao
 import br.com.tmdev.agenda.db.UserEntity
 import br.com.tmdev.agenda.db.UserRoomDatabase
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -17,6 +18,7 @@ open class AgendaRepository(context: Context) {
         mUserDao = db?.getUserDao()
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun insert(userEntity: UserEntity) = GlobalScope.launch {
         mUserDao?.insertUser(userEntity)
     }
@@ -29,10 +31,12 @@ open class AgendaRepository(context: Context) {
         return mUserDao?.getUserById(id)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun update(userEntity: UserEntity) = GlobalScope.launch {
         mUserDao?.updated(userEntity.id, userEntity.name, userEntity.email, userEntity.contact)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun deleteById(id: Int) = GlobalScope.launch {
         mUserDao?.deleteById(id)
     }

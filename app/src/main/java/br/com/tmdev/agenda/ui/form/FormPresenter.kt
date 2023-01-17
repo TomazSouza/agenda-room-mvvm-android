@@ -5,21 +5,14 @@ import br.com.tmdev.agenda.constants.BundleConstants
 import br.com.tmdev.agenda.db.UserEntity
 import br.com.tmdev.agenda.entities.User
 import br.com.tmdev.agenda.repository.AgendaRepository
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class FormPresenter : ContractForm.Presenter {
+class FormPresenter(contractForm: ContractForm.View?, agendaRepository: AgendaRepository) : ContractForm.Presenter {
 
-    private var mAgendaRepository: AgendaRepository? = null
-    private var mViewImp: ContractForm.View? = null
-
-    constructor(
-        contractForm: ContractForm.View?,
-        agendaRepository: AgendaRepository
-    ) : super() {
-        this.mViewImp = contractForm
-        this.mAgendaRepository = agendaRepository
-    }
+    private var mAgendaRepository: AgendaRepository? = agendaRepository
+    private var mViewImp: ContractForm.View? = contractForm
 
     override fun addDataUser(user: User) {
 
@@ -38,6 +31,7 @@ class FormPresenter : ContractForm.Presenter {
         this.mViewImp?.nextActivity()
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun editData(bundle: Bundle?) = GlobalScope.launch {
         if (bundle != null && bundle.containsKey(BundleConstants.KEY.ID_USER)) {
 

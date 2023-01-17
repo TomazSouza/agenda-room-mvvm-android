@@ -8,19 +8,18 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.tmdev.agenda.R
-import br.com.tmdev.agenda.entities.User
-import br.com.tmdev.agenda.ui.adapter.AgendaAdapter
 import br.com.tmdev.agenda.constants.BundleConstants
+import br.com.tmdev.agenda.databinding.ActivityMainBinding
+import br.com.tmdev.agenda.entities.User
 import br.com.tmdev.agenda.repository.AgendaRepository
+import br.com.tmdev.agenda.ui.adapter.AgendaAdapter
 import br.com.tmdev.agenda.ui.base.BaseActivity
 import br.com.tmdev.agenda.ui.form.FormActivity
-import br.com.tmdev.agenda.viewmodel.ListViewModel
 import br.com.tmdev.agenda.util.OpenActivity
 import br.com.tmdev.agenda.util.RecyclerItemTouchHelper
 import br.com.tmdev.agenda.util.RecyclerItemTouchHelperListener
+import br.com.tmdev.agenda.viewmodel.ListViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_main.*
 
 class ListUserActivity : BaseActivity(),
     ContractList.View,
@@ -29,29 +28,32 @@ class ListUserActivity : BaseActivity(),
     private var mListViewModel: ListViewModel? = null
     private var mListPresenter: ContractList.Presenter? = null
     private var mAgendaAdapter: AgendaAdapter? = null
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         mListViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         mListPresenter = ListPresenter(this, AgendaRepository(this))
 
         mAgendaAdapter = AgendaAdapter(ArrayList(), this)
 
-        recyclerViewId.layoutManager = LinearLayoutManager(this)
-        recyclerViewId.setHasFixedSize(true)
-        recyclerViewId.itemAnimator = DefaultItemAnimator()
-        recyclerViewId.adapter = mAgendaAdapter
+        binding.recyclerViewId.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewId.setHasFixedSize(true)
+        binding.recyclerViewId.itemAnimator = DefaultItemAnimator()
+        binding.recyclerViewId.adapter = mAgendaAdapter
 
-        val iteCall: ItemTouchHelper.SimpleCallback = RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)
-        ItemTouchHelper(iteCall).attachToRecyclerView(recyclerViewId)
+        val iteCall: ItemTouchHelper.SimpleCallback =
+            RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)
+        ItemTouchHelper(iteCall).attachToRecyclerView(binding.recyclerViewId)
 
         mListViewModel?.getAllUsers()?.observe(this, Observer {
             mListPresenter?.setListUsers(it)
         })
 
-        btnAdd.setOnClickListener {
+        binding.btnAdd.setOnClickListener {
             OpenActivity.start(this, FormActivity::class.java, false, null)
         }
 
@@ -63,9 +65,9 @@ class ListUserActivity : BaseActivity(),
 
     override fun showRecycler(show: Boolean) {
         if (show) {
-            recyclerViewId.visibility = View.VISIBLE
+            binding.recyclerViewId.visibility = View.VISIBLE
         } else {
-            recyclerViewId.visibility = View.INVISIBLE
+            binding.recyclerViewId.visibility = View.INVISIBLE
         }
     }
 
@@ -94,7 +96,7 @@ class ListUserActivity : BaseActivity(),
     }
 
     override fun updateUiRemovedItem(name: String) {
-        val snackBar = Snackbar.make(btnAdd, "$name removido", Snackbar.LENGTH_LONG)
+        val snackBar = Snackbar.make(binding.btnAdd, "$name removido", Snackbar.LENGTH_LONG)
         snackBar.setAction("Desfazer", View.OnClickListener {
             mListPresenter?.restoreItem()
         })
